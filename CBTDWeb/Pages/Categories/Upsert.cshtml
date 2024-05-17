@@ -30,13 +30,13 @@
                     <input type="hidden" asp-for="objCategory.Id" />
                 }
 
-                <div class="col-6 col-md-3">
                 <div class="row pt-2">
-                        <button type="submit" class="btn btn-primary form-control" @(Model.objCategory.Id != 0 ? "Update " : "Create ")</button>
-                    </div> 
+                    <button type="submit" class="btn btn-primary form-control" >@(Model.objCategory.Id != 0 ? "Update " : "Create ")</button>
+                     
                     <a asp-page="Index" class="btn btn-outline-primary border  form-control">
                         Back to List
-                    </a>
+                     </a>
+                </div>
             </div>
         </form>
     </div>
