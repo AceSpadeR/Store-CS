@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Infrastructure.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,12 @@ namespace Infrastructure.Interfaces
     public interface IGenericRepostitory<T> where T : class
     {
         T GetById(int? id);
-        T Get(Expression<Func<T, bool>> predicate);
 
         T Get(Expression<Func<T, bool>> predicate, bool trackChanges = false, string? includes = null);
 
         Task<T> GetAsync(Expression<Func<T, bool>> predicate, bool trackChanges = false, string? includes = null);
 
-        IEnumerable<T> GetAll(Expression<Func<T, bool>> predicate, Expression<Func<T, int>>? orderBy = null, string? includes = null);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>>? predicate = null, Expression<Func<T, int>>? orderBy = null, string? includes = null);
 
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> predicate, Expression<Func<T, int>>? orderBy = null, string? includes = null); 
 
@@ -32,8 +32,6 @@ namespace Infrastructure.Interfaces
 
         // UpdateChanges
         void Update(T entity);
-        
-
-
+       
     }
 }

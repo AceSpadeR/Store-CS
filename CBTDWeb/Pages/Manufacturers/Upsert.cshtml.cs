@@ -7,13 +7,14 @@ namespace CBTDWeb.Pages.Manufacturers
 {
     public class UpsertModel : PageModel
     {
-        private readonly ApplicationDbContext _db;
-        [BindProperty]  
+        private readonly UnitOfWork _unitOfWork;  //local instance of the database service
+
+        [BindProperty]  //synchronizes form fields with values in code behind
         public Manufacturer objManufacturer { get; set; }
 
-        public UpsertModel(ApplicationDbContext db)  //dependency injection
+        public UpsertModel(UnitOfWork unitOfWork)  //dependency injection
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult OnGet(int? id)
@@ -23,7 +24,7 @@ namespace CBTDWeb.Pages.Manufacturers
 
             if (id != 0)
             {
-                objManufacturer = _db.Manufacturers.Find(id);
+                objManufacturer = _unitOfWork.Manufacturer.GetById(id);
             }
 
             if (objManufacturer == null)  
@@ -44,15 +45,15 @@ namespace CBTDWeb.Pages.Manufacturers
 
             if (objManufacturer.Id == 0)
             {
-                _db.Manufacturers.Add(objManufacturer);
+                _unitOfWork.Manufacturer.Add(objManufacturer);
                 TempData["success"] = "Manufacturer added Successfully";
             }
             else
             {
-                _db.Manufacturers.Update(objManufacturer);
+                _unitOfWork.Manufacturer.Update(objManufacturer);
                 TempData["success"] = "Manufacturer updated Successfully";
             }
-            _db.SaveChanges();
+            _unitOfWork.Commit();
 
             return RedirectToPage("./Index");
         }
