@@ -25,7 +25,7 @@ namespace DataAccess
         {
             get
             {
-                if (_Category!=null)
+                if (_Category==null)
                 {
                     _Category = new GenericRepository<Category>(_dbContext);
 
@@ -38,7 +38,7 @@ namespace DataAccess
         {
             get
             {
-                if (_Manufacturer != null)
+                if (_Manufacturer == null)
                 {
                     _Manufacturer = new GenericRepository<Manufacturer>(_dbContext);
 

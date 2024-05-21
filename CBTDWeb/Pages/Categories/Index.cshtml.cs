@@ -27,6 +27,7 @@ namespace CBTDWeb.Pages.Categories
         FileResult: Represents a file result, which sends a file to the client for download.
         */
         {
+
             objCategoryList = _unitOfWork.Category.GetAll();
             return Page();
         }
