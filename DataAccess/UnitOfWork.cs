@@ -20,6 +20,7 @@ namespace DataAccess
         public IGenericRepostitory<Category> _Category;
 
         public IGenericRepostitory<Manufacturer> _Manufacturer;
+        public IGenericRepostitory<Product> _Product;
 
         public IGenericRepostitory<Category> Category
         {
@@ -46,6 +47,20 @@ namespace DataAccess
                 return _Manufacturer;
             }
         }
+
+        public IGenericRepostitory<Product> Product
+        {
+            get
+            {
+                if (_Product == null)
+                {
+                    _Product = new GenericRepository<Product>(_dbContext);
+
+                }
+                return _Product;
+            }
+        }
+
 
         public int Commit()
         {
