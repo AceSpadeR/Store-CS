@@ -1,4 +1,5 @@
 using DataAccess;
+using DataAccess.DataAccess.DbInitializer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     ));
 
 builder.Services.AddScoped<UnitOfWork>();
+
+builder.Services.AddScoped<DbInitializer>();
+
+
 var app = builder.Build();
 
 
@@ -30,5 +35,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+SeedDatabase();
+void SeedDatabase()
+{
+	using var scope = app.Services.CreateScope();
+	var dbInitializer = scope.ServiceProvider.GetRequiredService<DbInitializer>();
+	dbInitializer.Initialize();
+}
 
 app.Run();
