@@ -11,6 +11,7 @@ namespace Infrastructure.Interfaces
     {
         public IGenericRepostitory<Category> Category { get; }
         public IGenericRepostitory<Manufacturer> Manufacturer { get; }
+        public IGenericRepostitory<Product> Product { get; }
 
         // Add other models tables here are you create them
         // so UnitOfWork has access to them
