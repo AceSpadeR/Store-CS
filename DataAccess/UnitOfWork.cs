@@ -21,6 +21,7 @@ namespace DataAccess
 
         public IGenericRepostitory<Manufacturer> _Manufacturer;
         public IGenericRepostitory<Product> _Product;
+        public IGenericRepostitory<ApplicationUser> _ApplicationUser;
 
         public IGenericRepostitory<Category> Category
         {
@@ -58,6 +59,19 @@ namespace DataAccess
 
                 }
                 return _Product;
+            }
+        }
+
+        public IGenericRepostitory<ApplicationUser> ApplicationUser
+        {
+            get
+            {
+                if (_ApplicationUser == null)
+                {
+                    _ApplicationUser = new GenericRepository<ApplicationUser>(_dbContext);
+
+                }
+                return _ApplicationUser;
             }
         }
 

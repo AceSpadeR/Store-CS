@@ -1,9 +1,11 @@
 ﻿using Infrastructure.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
-    public class ApplicationDbContext : DbContext 
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -13,6 +15,7 @@ namespace DataAccess
         public DbSet<Category> Categories { get; set; }  //the physical DB table will be name Categories
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 
 
