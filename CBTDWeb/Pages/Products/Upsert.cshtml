@@ -2,7 +2,7 @@
 @model CBTDWeb.Pages.Products.UpsertModel
 @{
 }
-<form method="post" asp-action="Upsert" 
+<form method="post" 
     enctype="multipart/form-data">
 
     <!--Hide these if we are in edit mode, so they are sent back with the post,
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label>PLACEHOLDER Name</label>
+                    <label>Name</label>
                     <input id="txtName" asp-for="objProduct.Name" class="form-control" />
                 </div>
                 <div class="mb-3">
