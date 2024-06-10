@@ -1,8 +1,9 @@
-﻿var dataTable;
-
+﻿
 $(document).ready(function () {
     loadList();
 });
+
+var dataTable;
 
 function loadList() {
     dataTable = $('#DT_Products').DataTable({
@@ -20,12 +21,13 @@ function loadList() {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center"> 
-                                <a href="/Products/Upsert?id=${data}" class="btn btn-success text-white" style="cursor:pointer; width: 100px;">
-                                   <i class="far fa-edit"></i> Edit </a>
-                                 <a href="/Products/Delete?id=${data}" class="btn btn-danger text-white" style="cursor:pointer; width: 100px;">
-                                   <i class="far fa-trash-alt"></i> Delete </a>   
-                             </div>`;  
-                },
+                                <a href="/Products/Upsert?id=${data}" class="btn btn-success text-white" style="cursor:pointer; width: 100px;">
+                                    <i class="far fa-edit"></i> Edit </a>
+                                <a href="/Products/Delete?id=${data}" class="btn btn-danger text-white" style="cursor:pointer; width: 100px;">
+                                    <i class="far fa-trash-alt"></i> Delete </a>   
+                            </div>`;
+                }
+,
                 "width": "30%"
             }
         ],
