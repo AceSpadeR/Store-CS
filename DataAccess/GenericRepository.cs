@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using System.ComponentModel.Design;
+using Infrastructure.Models;
 
 namespace DataAccess
 {
@@ -226,5 +227,18 @@ namespace DataAccess
             _dbContext.Entry(entity).State = EntityState.Modified;
 
         }
+
+        public int DecrementCount(ShoppingCart shoppingCart, int count)
+        {
+            shoppingCart.Count -= count;
+            return shoppingCart.Count;
+        }
+
+        public int IncrementCount(ShoppingCart shoppingCart, int count)
+        {
+            shoppingCart.Count += count;
+            return shoppingCart.Count;
+        }
+
     }
 }

@@ -11,6 +11,10 @@ namespace Infrastructure.Interfaces
 {
     public interface IGenericRepostitory<T> where T : class
     {
+        // Increment and Decrement Shopping Cart
+        int IncrementCount(ShoppingCart shoppingCart, int count);
+        int DecrementCount(ShoppingCart shoppingCart, int count);
+
         T GetById(int? id);
 
         T Get(Expression<Func<T, bool>> predicate, bool trackChanges = false, string? includes = null);

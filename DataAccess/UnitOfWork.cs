@@ -22,7 +22,7 @@ namespace DataAccess
         public IGenericRepostitory<Manufacturer> _Manufacturer;
         public IGenericRepostitory<Product> _Product;
         public IGenericRepostitory<ApplicationUser> _ApplicationUser;
-
+        public IGenericRepostitory<ShoppingCart> _ShoppingCart;
         public IGenericRepostitory<Category> Category
         {
             get
@@ -72,6 +72,18 @@ namespace DataAccess
 
                 }
                 return _ApplicationUser;
+            }
+        }
+        public IGenericRepostitory<ShoppingCart> ShoppingCart
+        {
+            get
+            {
+                if (_ShoppingCart == null)
+                {
+                    _ShoppingCart = new GenericRepository<ShoppingCart>(_dbContext);
+
+                }
+                return _ShoppingCart;
             }
         }
 

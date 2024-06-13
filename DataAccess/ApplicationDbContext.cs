@@ -17,6 +17,8 @@ namespace DataAccess
         public DbSet<Product> Products { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+
 
 
 
