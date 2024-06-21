@@ -11,7 +11,7 @@ using Infrastructure.Models;
 
 namespace DataAccess
 {
-    public class GenericRepository<T> : IGenericRepostitory<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly ApplicationDbContext _dbContext;
 

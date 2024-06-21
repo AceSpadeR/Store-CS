@@ -9,14 +9,19 @@ namespace Infrastructure.Interfaces
 {
     public interface IUnitOfWork
     {
-        public IGenericRepostitory<Category> Category { get; }
-        public IGenericRepostitory<Manufacturer> Manufacturer { get; }
-        public IGenericRepostitory<Product> Product { get; }
+        public IGenericRepository<Category> Category { get; }
+        public IGenericRepository<Manufacturer> Manufacturer { get; }
+        public IGenericRepository<Product> Product { get; }
         
 
-        public IGenericRepostitory<ApplicationUser> ApplicationUser { get; }
+        public IGenericRepository<ApplicationUser> ApplicationUser { get; }
 
-        public IGenericRepostitory<ShoppingCart> ShoppingCart { get; }
+        public IGenericRepository<ShoppingCart> ShoppingCart { get; }
+
+        public IGenericRepository<OrderDetails> OrderDetails { get; }
+
+        public IOrderHeaderRepository<OrderHeader> OrderHeader { get; }
+
 
         // Add other models tables here are you create them
         // so UnitOfWork has access to them

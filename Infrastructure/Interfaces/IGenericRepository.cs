@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Interfaces
 {
-    public interface IGenericRepostitory<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         // Increment and Decrement Shopping Cart
         int IncrementCount(ShoppingCart shoppingCart, int count);

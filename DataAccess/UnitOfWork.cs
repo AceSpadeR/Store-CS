@@ -17,13 +17,16 @@ namespace DataAccess
             _dbContext = dbContext;
 
         }
-        public IGenericRepostitory<Category> _Category;
+        private IGenericRepository<Category> _Category;
+        private IGenericRepository<Manufacturer> _Manufacturer;
+        private IGenericRepository<Product> _Product;
+        private IGenericRepository<ApplicationUser> _ApplicationUser;
+        private IGenericRepository<ShoppingCart> _ShoppingCart;
+        private IGenericRepository<OrderDetails> _OrderDetails;
+        private IOrderHeaderRepository<OrderHeader> _OrderHeader;
 
-        public IGenericRepostitory<Manufacturer> _Manufacturer;
-        public IGenericRepostitory<Product> _Product;
-        public IGenericRepostitory<ApplicationUser> _ApplicationUser;
-        public IGenericRepostitory<ShoppingCart> _ShoppingCart;
-        public IGenericRepostitory<Category> Category
+
+        public IGenericRepository<Category> Category
         {
             get
             {
@@ -36,7 +39,7 @@ namespace DataAccess
             }
         }
 
-        public IGenericRepostitory<Manufacturer> Manufacturer
+        public IGenericRepository<Manufacturer> Manufacturer
         {
             get
             {
@@ -49,7 +52,7 @@ namespace DataAccess
             }
         }
 
-        public IGenericRepostitory<Product> Product
+        public IGenericRepository<Product> Product
         {
             get
             {
@@ -62,7 +65,7 @@ namespace DataAccess
             }
         }
 
-        public IGenericRepostitory<ApplicationUser> ApplicationUser
+        public IGenericRepository<ApplicationUser> ApplicationUser
         {
             get
             {
@@ -74,7 +77,7 @@ namespace DataAccess
                 return _ApplicationUser;
             }
         }
-        public IGenericRepostitory<ShoppingCart> ShoppingCart
+        public IGenericRepository<ShoppingCart> ShoppingCart
         {
             get
             {
@@ -86,6 +89,33 @@ namespace DataAccess
                 return _ShoppingCart;
             }
         }
+
+        public IGenericRepository<OrderDetails> OrderDetails
+        {
+            get
+            {
+                if (_OrderDetails == null)
+                {
+                    _OrderDetails = new GenericRepository<OrderDetails>(_dbContext);
+
+                }
+                return _OrderDetails;
+            }
+        }
+
+        public IOrderHeaderRepository<OrderHeader> OrderHeader
+        {
+            get
+            {
+                if (_OrderHeader == null)
+                {
+                    _OrderHeader = new OrderHeaderRepository(_dbContext);
+
+                }
+                return _OrderHeader;
+            }
+        }
+
 
 
         public int Commit()
