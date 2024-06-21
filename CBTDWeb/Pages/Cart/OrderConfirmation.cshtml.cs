@@ -3,6 +3,8 @@ using Infrastructure.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Stripe.Checkout;
+using Utility;
 
 namespace CBTDWeb.Pages.Cart
 {
@@ -23,14 +25,14 @@ namespace CBTDWeb.Pages.Cart
             OrderHeader objOrderHeader = _unitOfWork.OrderHeader.Get(o => o.Id == orderId, includes: "ApplicationUser");
             OrderId = objOrderHeader.Id;
             //check the stripe status
-            //var service = new SessionService();
-            //Session session = service.Get(objOrderHeader.SessionId);
+            var service = new SessionService();
+            Session session = service.Get(objOrderHeader.SessionId);
 
-            //if (session.PaymentStatus.ToLower() == "paid")
-            //{
-            //    _unitOfWork.OrderHeader.UpdateStatus(orderId, SD.StatusApproved, SD.PaymentStatusApproved);
-            //    _unitOfWork.Commit();
-            //}
+            if (session.PaymentStatus.ToLower() == "paid")
+            {
+                _unitOfWork.OrderHeader.UpdateStatus(orderId, SD.StatusApproved, SD.PaymentStatusApproved);
+                _unitOfWork.Commit();
+            }
             //Send an e-mail
 
             _emailSender.SendEmailAsync(objOrderHeader.ApplicationUser.Email, "New Order - CBTD", "<p>New Order Created.</p>Your order number is " + OrderId.ToString());

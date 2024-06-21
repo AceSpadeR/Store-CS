@@ -95,7 +95,7 @@ namespace CBTDWeb.Pages.Cart
 			_unitOfWork.Commit();
 
 			//stripe settings 
-			var domain = "https://localhost:7025/";
+			var domain = "http://aceofwebsite-002-site2.atempurl.com/";
 			var options = new SessionCreateOptions
 			{
 				PaymentMethodTypes = new List<string>
